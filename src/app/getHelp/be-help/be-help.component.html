@@ -1,0 +1,39 @@
+<div class="container">
+    <br/>
+          <div>
+            <input type="text" class="form-control" placeholder="Search for Products" [(ngModel)]="filterBy" >
+          </div><!-- /input-group -->
+       
+      <br/>
+
+    <div *ngIf="filterBy" class="alert alert-success">
+      Product Filtered Using: {{filterBy}}
+    </div>
+
+      <table *ngIf="products && products.length" class="table table-bordered table-hover">
+        <tr>
+          <th>
+            <button class="btn btn-primary" (click)="toggleImage()"> {{showhideImg ? 'Hide Image' : "Show Image"}}</button>
+          </th>
+          <th>Product Name</th>
+          <th>Product Code</th>
+          <th>Product Price</th>
+          <th>Product Ratings</th>
+        </tr>
+        <tr *ngFor="let product of products | productFilter:filterBy">
+          <td>
+            <img *ngIf="showhideImg" [src]="product.image" style="width: 50px"/>
+          </td>
+          <td>
+            <a href="#" [routerLink]="['/behelp',product.productCode]">
+              {{product.name}}
+            </a>
+          </td>
+          <td>{{product.productCode}}</td>
+          <td>{{product.price}}</td>
+          <td>
+            <app-ratings [rating]="product.rating" (childToParent)="receiveRating($event)" ></app-ratings>
+          </td>
+        </tr>
+      </table>
+</div>

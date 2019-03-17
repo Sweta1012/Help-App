@@ -1,0 +1,72 @@
+  <div class="container">
+    
+      <form [formGroup]="registerForm" (ngSubmit)="goToLogin()">
+         
+              <div class="form-group" [ngClass]="{'has-error': registerForm.get('firstname').errors && (registerForm.get('firstname').touched || registerForm.get('firstname').dirty)}">
+                <label class="control-label" for="fname">First Name *</label>
+                <input type="text" formControlName="firstname" class="form-control" id="fname" placeholder="First Name" name="fname"> 
+              </div>
+             
+              <div class="form-group" [ngClass]="{'has-error': registerForm.get('lastname').errors && (registerForm.get('lastname').touched || registerForm.get('lastname').dirty)}">
+                <label class="control-label" for="lname">Last Name *</label>
+                <input type="text" name="lname" formControlName="lastname" class="form-control" id="lname" placeholder="Last Name">
+              </div>
+
+              <div class="form-group">
+                <label class="control-label" for="middlename">MiddleName</label>
+                <input type="text" name="middlename" formControlName="middlename" class="form-control" id="middlename" placeholder="Middle Name">
+            </div>
+          
+              <div class="form-group" [ngClass]="{'has-error': registerForm.get('email').errors && (registerForm.get('email').touched || registerForm.get('email').dirty)}">
+                  <label class="control-label" for="email">Email *</label>
+                  <input type="email" name="email" formControlName="email" class="form-control" id="email" placeholder="Email">
+              </div> 
+              
+             
+              <div class="form-group" [ngClass]="{'has-error': registerForm.get('password').errors && (registerForm.get('password').touched || registerForm.get('password').dirty)}">
+                  <label class="control-label" for="password">Password *</label>
+                  <input type="password" name="password" formControlName="password" class="form-control" id="password" placeholder="Password">    
+              </div>
+
+              <div class="form-group" [ngClass]="{'has-error': registerForm.get('confirmPsw').errors && (registerForm.get('confirmPsw').touched || registerForm.get('confirmPsw').dirty)}">
+                  <label class="control-label" for="cnfPassword">Confirm Password *</label>
+                  <input type="password" name="cnfPassword" formControlName="confirmPsw" class="form-control" id="cnfPassword" placeholder="Type Password again">
+              </div>
+          
+          <div class="form-group" [ngClass]="{'has-error': registerForm.get('address1').errors && (registerForm.get('address1').touched || registerForm.get('address1').dirty)}">
+              <label for="Address1" class="form-control-label control-label">Address *</label>
+              <input type="text" name="Address1" formControlName="address1" class="form-control" id="Address1" placeholder="1234 Main St">
+          </div>
+          
+          
+            <div class="form-group" [ngClass]="{'has-error': registerForm.get('city').errors && (registerForm.get('city').touched || registerForm.get('city').dirty)}">
+                  <label class="control-label" for="City">City *</label>
+                  <input type="text" name="City" formControlName="city" id="City" class="form-control">
+            </div>
+            
+            <div class="form-group" [ngClass]="{'has-error': registerForm.get('state').errors && (registerForm.get('state').touched || registerForm.get('state').dirty)}">
+                <label class="control-label" for="State">State *</label>
+                <select id="State" class="form-control" formControlName="state" name="state">
+                  <option>CA</option>
+                  <option>TX</option>
+                </select>
+            </div>
+            <div class="form-group" [ngClass]="{'has-error': registerForm.get('zipcode').errors && (registerForm.get('zipcode').touched || registerForm.get('zipcode').dirty)}">
+                <label class="control-label" for="inputZip">Zip *</label>
+                <input type="text" name="zipcode" formControlName="zipcode" class="form-control" id="inputZip">
+            </div>
+           
+          <div class="form-group">
+            <div class="form-check form-control">
+              <input type="checkbox" name="terms" id="agreeterms">
+              <label class="form-check-label control-label" for="agreeterms">
+                Agree to the Terms and Conditions. *
+              </label>
+            </div>
+          </div>
+          <div class="btn-toolbar">
+              <button type="button" class="btn btn-primary" (click)="loadData()">Load Data </button>
+              <button type="submit" [disabled]="registerForm.invalid" class="btn btn-primary">Register </button>
+          </div>
+          </form>
+</div>

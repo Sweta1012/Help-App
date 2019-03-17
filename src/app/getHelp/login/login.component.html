@@ -1,0 +1,28 @@
+<form #loginForm ="ngForm" (ngSubmit)="goToHome(loginForm)" class="needs-validation">
+      <div class="form-group" [class.has-error]="emailControl.invalid && emailControl.touched">
+          <label for="email">Email address</label>
+          <input type="email" required pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$" #emailControl="ngModel" name="email" [(ngModel)]="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+          <span *ngIf="emailControl.errors?.required && emailControl.touched" class="help-block">Email is required!</span>
+          <span *ngIf="emailControl.errors?.pattern && emailControl.touched" class="help-block">Invalid Email!</span>
+      </div>
+       
+      <div class="form-group" [class.has-error]="pswControl.invalid && pswControl.touched">
+          <label for="password">Password</label>
+          <input type="password" required #pswControl="ngModel" name="password" [(ngModel)]="password" class="form-control" id="password" placeholder="Password">
+          <span class="help-block" *ngIf="pswControl.touched && pswControl.errors?.required">
+            Please Enter Your Password!!
+          </span>  
+      </div>
+       
+      <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1"  name="RememberMe" [(ngModel)]="RememberMe">
+        <label class="form-check-label" for="exampleCheck1">Remember Me</label>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+      <div *ngIf="success">
+          success!!
+      </div>
+</form>
+
+{{loginForm.value | json}}
